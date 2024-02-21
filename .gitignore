@@ -1,0 +1,16 @@
+build/bin
+node_modules
+frontend/dist
+
+# Develop tools
+.idea/
+.vscode/
+*.swp
+
+# Project
+*.log
+bin/
+tmp/
+
+# OS general
+.DS_Store
