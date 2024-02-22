@@ -34,4 +34,4 @@ require (
 	golang.org/x/text v0.13.0 // indirect
 )
 
-// replace github.com/wailsapp/wails/v2 v2.7.1 => /Users/man/go/pkg/mod
+// replace github.com/wailsapp/wails/v2 v2.7.1 => ~/go/pkg/mod
