@@ -1,13 +1,13 @@
 {
   "$schema": "https://wails.io/schemas/config.v2.json",
-  "name": "redis-desktop-explorer",
+  "name": "Redis Desktop Explorer",
   "outputfilename": "redis-desktop-explorer",
   "frontend:install": "npm install",
   "frontend:build": "npm run build",
   "frontend:dev:watcher": "npm run dev",
   "frontend:dev:serverUrl": "auto",
   "author": {
-    "name": "manzhou",
-    "email": "manzhouya@gmail.com"
+    "name": "mzccddkk",
+    "email": "mzccddkk@gmail.com"
   }
 }

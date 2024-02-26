@@ -17,7 +17,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "redis-desktop-explorer",
+		Title:  app.appName,
 		Width:  1024,
 		Height: 768,
 		AssetServer: &assetserver.Options{
@@ -29,6 +29,9 @@ func main() {
 		Bind: []interface{}{
 			app,
 		},
+		Windows: app.windowsOptions,
+		Mac:     app.macOptions,
+		Linux:   app.linuxOptions,
 	})
 
 	if err != nil {

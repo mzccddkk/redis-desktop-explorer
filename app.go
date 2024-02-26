@@ -3,16 +3,35 @@ package main
 import (
 	"context"
 	"fmt"
+
+	"github.com/wailsapp/wails/v2/pkg/options/linux"
+	"github.com/wailsapp/wails/v2/pkg/options/mac"
+	"github.com/wailsapp/wails/v2/pkg/options/windows"
+	"redis-desktop-explorer/internal"
 )
 
 // App struct
 type App struct {
-	ctx context.Context
+	ctx            context.Context
+	appName        string
+	windowsOptions *windows.Options
+	macOptions     *mac.Options
+	linuxOptions   *linux.Options
 }
 
 // NewApp creates a new App application struct
 func NewApp() *App {
-	return &App{}
+	a := &App{}
+	a.appName = "Redis Desktop Explorer"
+	a.windowsOptions = nil
+	a.macOptions = &mac.Options{
+		About: &mac.AboutInfo{
+			Title:   a.appName,
+			Message: "Version: " + internal.Version,
+		},
+	}
+	a.linuxOptions = nil
+	return a
 }
 
 // startup is called when the app starts. The context is saved,
