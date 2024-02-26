@@ -14,6 +14,7 @@ import (
 type App struct {
 	ctx            context.Context
 	appName        string
+	appTitle       string
 	windowsOptions *windows.Options
 	macOptions     *mac.Options
 	linuxOptions   *linux.Options
@@ -23,6 +24,7 @@ type App struct {
 func NewApp() *App {
 	a := &App{}
 	a.appName = "Redis Desktop Explorer"
+	a.appTitle = a.appName + " " + internal.Version
 	a.windowsOptions = nil
 	a.macOptions = &mac.Options{
 		About: &mac.AboutInfo{
