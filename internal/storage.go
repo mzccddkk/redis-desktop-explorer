@@ -7,23 +7,23 @@ import (
 	"github.com/mitchellh/go-homedir"
 )
 
-type storage struct {
+type Storage struct {
 	path string
 }
 
-func newStorage(filename string) *storage {
+func NewStorage(filename string) *Storage {
 	dir, _ := homedir.Dir()
 
-	return &storage{
+	return &Storage{
 		path: path.Join(dir, storageDir, filename),
 	}
 }
 
-func (s *storage) get() ([]byte, error) {
+func (s *Storage) Get() ([]byte, error) {
 	return os.ReadFile(s.path)
 }
 
-func (s *storage) put(data []byte) error {
+func (s *Storage) Put(data []byte) error {
 	dir := path.Dir(s.path)
 	_, err := os.Stat(dir)
 	if os.IsNotExist(err) {
@@ -32,5 +32,6 @@ func (s *storage) put(data []byte) error {
 			return err
 		}
 	}
+
 	return os.WriteFile(s.path, data, 0777)
 }

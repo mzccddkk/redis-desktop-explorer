@@ -6,17 +6,17 @@ import (
 )
 
 func TestStoragePut(t *testing.T) {
-	s := newStorage("test.yaml")
+	s := NewStorage("test.yaml")
 
-	if err := s.put([]byte("test")); err != nil {
+	if err := s.Put([]byte("test")); err != nil {
 		t.Errorf("put failed: %v", err)
 	}
 }
 
 func TestStorageGet(t *testing.T) {
-	s := newStorage("test.yaml")
+	s := NewStorage("test.yaml")
 
-	data, err := s.get()
+	data, err := s.Get()
 	if err != nil {
 		t.Errorf("get failed: %v", err)
 	}

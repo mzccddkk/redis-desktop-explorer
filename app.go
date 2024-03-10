@@ -3,11 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/wailsapp/wails/v2/pkg/options/linux"
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 	"redis-desktop-explorer/internal"
+	"redis-desktop-explorer/internal/service"
 )
 
 // App struct
@@ -18,22 +21,27 @@ type App struct {
 	windowsOptions *windows.Options
 	macOptions     *mac.Options
 	linuxOptions   *linux.Options
+
+	// services
+	connSrv *service.ConnectionService
 }
 
 // NewApp creates a new App application struct
-func NewApp() *App {
-	a := &App{}
-	a.appName = "Redis Desktop Explorer"
-	a.appTitle = a.appName + " " + internal.Version
-	a.windowsOptions = nil
-	a.macOptions = &mac.Options{
-		About: &mac.AboutInfo{
-			Title:   a.appName,
-			Message: "Version: " + internal.Version,
+func NewApp(connSrv *service.ConnectionService) *App {
+	return &App{
+		ctx:            nil,
+		appName:        internal.AppName,
+		appTitle:       internal.AppName + " " + internal.Version,
+		windowsOptions: nil,
+		macOptions: &mac.Options{
+			About: &mac.AboutInfo{
+				Title:   internal.AppName,
+				Message: "Version: " + internal.Version,
+			},
 		},
+		linuxOptions: nil,
+		connSrv:      connSrv,
 	}
-	a.linuxOptions = nil
-	return a
 }
 
 // startup is called when the app starts. The context is saved,
@@ -44,6 +52,12 @@ func (a *App) startup(ctx context.Context) {
 
 func (a *App) shutdown(ctx context.Context) {
 	// todo
+}
+
+func (a *App) beforeClose(ctx context.Context) (prevent bool) {
+	w, h := runtime.WindowGetSize(ctx)
+	log.Println("Window size: ", w, h)
+	return false
 }
 
 // Greet returns a greeting for the given name
