@@ -13,7 +13,7 @@ import (
 )
 
 // wireApp init application.
-func wireApp(conn string) (*App, func(), error) {
+func wireApp() (*App, func(), error) {
 	panic(wire.Build(
 		data.ProviderSet,
 		biz.ProviderSet,

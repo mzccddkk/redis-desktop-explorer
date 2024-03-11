@@ -23,11 +23,12 @@ type App struct {
 	linuxOptions   *linux.Options
 
 	// services
-	connSrv *service.ConnectionService
+	connSrv    *service.ConnectionService
+	settingSrv *service.SettingService
 }
 
 // NewApp creates a new App application struct
-func NewApp(connSrv *service.ConnectionService) *App {
+func NewApp(connSrv *service.ConnectionService, settingSrv *service.SettingService) *App {
 	return &App{
 		ctx:            nil,
 		appName:        internal.AppName,
@@ -41,6 +42,7 @@ func NewApp(connSrv *service.ConnectionService) *App {
 		},
 		linuxOptions: nil,
 		connSrv:      connSrv,
+		settingSrv:   settingSrv,
 	}
 }
 

@@ -11,17 +11,16 @@ type ConnectionService struct {
 	uc  *biz.ConnectionUsecase
 }
 
-func NewConnectionService(ctx context.Context, uc *biz.ConnectionUsecase) *ConnectionService {
+func NewConnectionService(uc *biz.ConnectionUsecase) *ConnectionService {
 	return &ConnectionService{
-		ctx: ctx,
-		uc:  uc,
+		uc: uc,
 	}
 }
 
-func (s *ConnectionService) CreateConnection(ctx context.Context, conn *biz.Connection) error {
-	return s.uc.CreateConnection(ctx, conn)
+func (s *ConnectionService) CreateConnection(conn *biz.Connection) error {
+	return s.uc.CreateConnection(s.ctx, conn)
 }
 
-func (s *ConnectionService) ListConnection(ctx context.Context) (*[]biz.Connection, error) {
-	return s.uc.ListConnection(ctx)
+func (s *ConnectionService) ListConnection() (*[]biz.Connection, error) {
+	return s.uc.ListConnection(s.ctx)
 }

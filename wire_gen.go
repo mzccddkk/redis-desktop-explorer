@@ -15,16 +15,18 @@ import (
 // Injectors from wire.go:
 
 // wireApp init application.
-func wireApp(conn string) (*App, func(), error) {
-	storage := data.NewConnectionStorage(conn)
-	dataData, cleanup, err := data.NewData(storage)
+func wireApp() (*App, func(), error) {
+	dataData, cleanup, err := data.NewData()
 	if err != nil {
 		return nil, nil, err
 	}
 	connectionRepo := data.NewConnectionRepo(dataData)
 	connectionUsecase := biz.NewConnectionUsecase(connectionRepo)
 	connectionService := service.NewConnectionService(connectionUsecase)
-	app := NewApp(connectionService)
+	settingRepo := data.NewSettingRepo(dataData)
+	settingUsecase := biz.NewSettingUsecase(settingRepo)
+	settingService := service.NewSettingService(settingUsecase)
+	app := NewApp(connectionService, settingService)
 	return app, func() {
 		cleanup()
 	}, nil

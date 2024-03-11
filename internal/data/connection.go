@@ -4,16 +4,19 @@ import (
 	"context"
 
 	"gopkg.in/yaml.v2"
+	"redis-desktop-explorer/internal"
 	"redis-desktop-explorer/internal/biz"
 )
 
 type connectionRepo struct {
-	data *Data
+	data         *Data
+	localStorage *internal.Storage
 }
 
 func NewConnectionRepo(data *Data) biz.ConnectionRepo {
 	return &connectionRepo{
-		data: data,
+		data:         data,
+		localStorage: internal.NewStorage(internal.ConnectionsFile),
 	}
 }
 
@@ -23,13 +26,13 @@ func (r *connectionRepo) Create(ctx context.Context, conn *biz.Connection) error
 		return err
 	}
 
-	return r.data.connectionStorage.Put(data)
+	return r.localStorage.Put(data)
 }
 
 func (r *connectionRepo) List(ctx context.Context) (*[]biz.Connection, error) {
 	var list *[]biz.Connection
 
-	data, err := r.data.connectionStorage.Get()
+	data, err := r.localStorage.Get()
 	if err != nil {
 		return list, err
 	}
