@@ -20,6 +20,20 @@ export namespace biz {
 	        this.password = source["password"];
 	    }
 	}
+	export class Setting {
+	    width: number;
+	    height: number;
+	
+	    static createFrom(source: any = {}) {
+	        return new Setting(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.width = source["width"];
+	        this.height = source["height"];
+	    }
+	}
 
 }
 
