@@ -21,6 +21,6 @@ func (s *ConnectionService) CreateConnection(conn *biz.Connection) error {
 	return s.uc.CreateConnection(s.ctx, conn)
 }
 
-func (s *ConnectionService) ListConnection() (*[]biz.Connection, error) {
+func (s *ConnectionService) ListConnection() ([]*biz.Connection, error) {
 	return s.uc.ListConnection(s.ctx)
 }

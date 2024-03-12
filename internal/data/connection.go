@@ -21,7 +21,13 @@ func NewConnectionRepo(data *Data) biz.ConnectionRepo {
 }
 
 func (r *connectionRepo) Create(ctx context.Context, conn *biz.Connection) error {
-	data, err := yaml.Marshal(conn)
+	list, err := r.List(ctx)
+	if err != nil {
+		return err
+	}
+
+	list = append(list, conn)
+	data, err := yaml.Marshal(&list)
 	if err != nil {
 		return err
 	}
@@ -29,15 +35,15 @@ func (r *connectionRepo) Create(ctx context.Context, conn *biz.Connection) error
 	return r.localStorage.Put(data)
 }
 
-func (r *connectionRepo) List(ctx context.Context) (*[]biz.Connection, error) {
-	var list *[]biz.Connection
+func (r *connectionRepo) List(ctx context.Context) ([]*biz.Connection, error) {
+	var list []*biz.Connection
 
 	data, err := r.localStorage.Get()
 	if err != nil {
 		return list, err
 	}
 
-	err = yaml.Unmarshal(data, list)
+	err = yaml.Unmarshal(data, &list)
 	if err != nil {
 		return list, err
 	}
