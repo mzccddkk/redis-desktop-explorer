@@ -15,7 +15,7 @@ func NewStorage(filename string) *Storage {
 	dir, _ := homedir.Dir()
 
 	return &Storage{
-		path: path.Join(dir, storageDir, filename),
+		path: path.Join(dir, StorageDir, filename),
 	}
 }
 

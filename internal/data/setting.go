@@ -21,7 +21,7 @@ func NewSettingRepo(data *Data) biz.SettingRepo {
 }
 
 func (r *settingRepo) Update(ctx context.Context, setting *biz.Setting) error {
-	data, err := yaml.Marshal(setting)
+	data, err := yaml.Marshal(&setting)
 	if err != nil {
 		return err
 	}

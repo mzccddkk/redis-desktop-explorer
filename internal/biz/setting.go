@@ -5,8 +5,8 @@ import (
 )
 
 type Setting struct {
-	Width  int `json:"width" yaml:"width"`
-	Height int `json:"height" yaml:"height"`
+	Width  int `json:"width,omitempty" yaml:"width,omitempty"`
+	Height int `json:"height,omitempty" yaml:"height,omitempty"`
 }
 
 type SettingRepo interface {
