@@ -4,8 +4,8 @@ export namespace biz {
 	    name: string;
 	    host: string;
 	    port: number;
-	    username: string;
-	    password: string;
+	    username?: string;
+	    password?: string;
 	
 	    static createFrom(source: any = {}) {
 	        return new Connection(source);
@@ -21,8 +21,8 @@ export namespace biz {
 	    }
 	}
 	export class Setting {
-	    width: number;
-	    height: number;
+	    width?: number;
+	    height?: number;
 	
 	    static createFrom(source: any = {}) {
 	        return new Setting(source);

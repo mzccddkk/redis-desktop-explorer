@@ -4,4 +4,4 @@ import {biz} from '../models';
 
 export function CreateConnection(arg1:biz.Connection):Promise<void>;
 
-export function ListConnection():Promise<any>;
+export function ListConnection():Promise<Array<biz.Connection>>;
