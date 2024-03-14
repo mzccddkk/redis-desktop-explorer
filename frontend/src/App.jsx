@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import './App.css';
 import {ListConnection} from "../wailsjs/go/service/ConnectionService.js";
 import Connection from "./components/Connection.jsx";
+import NiceModal from "@ebay/nice-modal-react";
+import MyAntdModal from './components/modal/Connection.jsx';
 
 function App() {
     // const [resultText, setResultText] = useState("Please enter your name below 👇");
@@ -12,6 +14,11 @@ function App() {
     // function greet() {
     //     Greet(name).then(updateResultText);
     // }
+
+    const showAntdModal = () => {
+        // Show a modal with arguments passed to the component as props
+        NiceModal.show(MyAntdModal, { name: 'Nate' })
+    };
 
     // Connection Data
     const [connectionData, setConnectionData] = useState(null);
@@ -28,7 +35,8 @@ function App() {
     return (
         <div id="App">
             <div id="Menu">
-                <Connection></Connection>
+                <button onClick={showAntdModal}>Connect to Redis</button>
+                {/*<Connection></Connection>*/}
             </div>
 
             <div id="Navigation">

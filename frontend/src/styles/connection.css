@@ -1,14 +1,22 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: red;
+/*.modal {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-color: rgba(0, 0, 0, 0);*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    background-color: red;*/
+/*}*/
+
+.modal-content {
+    width: 400px;
+    height: 400px;
+    background-color: #fff; /* 弹窗背景色 */
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .modal-background {
