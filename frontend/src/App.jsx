@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react';
 import './App.css';
-import {ListConnection} from "../wailsjs/go/service/ConnectionService.js";
-import Connection from "./components/Connection.jsx";
+import {ListConnection} from "../wailsjs/go/service/ConnectionService";
 import NiceModal from "@ebay/nice-modal-react";
-import MyAntdModal from './components/modal/Connection.jsx';
+import MyAntdModal from './components/modal/Connection';
 
 function App() {
     // const [resultText, setResultText] = useState("Please enter your name below 👇");

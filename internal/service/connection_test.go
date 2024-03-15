@@ -19,7 +19,7 @@ func TestCreateConnection(t *testing.T) {
 	connectionService := newConnectionService()
 
 	conn := &biz.Connection{
-		Name:     "test",
+		Name:     "",
 		Host:     "127.0.0.1",
 		Port:     6379,
 		Username: "",
