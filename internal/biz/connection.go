@@ -7,7 +7,7 @@ import (
 type Connection struct {
 	Name     string `json:"name" yaml:"name"`
 	Host     string `json:"host" yaml:"host"`
-	Port     int    `json:"port" yaml:"port"`
+	Port     int    `json:"port,string" yaml:"port"`
 	Username string `json:"username,omitempty" yaml:"username,omitempty"`
 	Password string `json:"password,omitempty" yaml:"password,omitempty"`
 }
