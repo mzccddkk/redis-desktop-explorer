@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.4",
     "@ebay/nice-modal-react": "^1.2.13",
     "antd": "^5.15.2",
     "react": "^18.2.0",

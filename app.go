@@ -39,7 +39,6 @@ func NewApp(connSrv *service.ConnectionService, settingSrv *service.SettingServi
 				Title:   internal.AppName,
 				Message: "Version: " + internal.Version,
 			},
-			TitleBar: mac.TitleBarHiddenInset(),
 		},
 		linuxOptions: nil,
 		connSrv:      connSrv,
