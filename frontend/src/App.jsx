@@ -24,21 +24,30 @@ function App() {
     }, [])
 
     return (
-        <div id="App">
+        <div id="app">
             <div className="side-bar">
-                <div className="text-letter side-top" title="Connect">
-                    <DatabaseFilled />
+                <div className="side-top" title="Connect">
+                    <div className="text-letter " title="Connect">
+                        <DatabaseFilled/>
+                    </div>
                 </div>
-                <div className="text-letter side-top" title="Connect">
-                    <PlusCircleFilled />
-                </div>
-                <div className="text-letter side-bottom" title="Setting">
-                    <SettingFilled/>
+                <div className="side-bottom">
+                    <div className="text-letter " title="Add">
+                        <PlusCircleFilled/>
+                    </div>
+                    <div className="text-letter " title="Setting">
+                        <SettingFilled/>
+                    </div>
                 </div>
             </div>
 
-            <div className="main">
-                main
+            <div className="content">
+                <div className="ccc">
+                    ccc
+                </div>
+                <div className="ddd">
+                    ddd
+                </div>
             </div>
 
             {/*<div id="Menu">*/}
